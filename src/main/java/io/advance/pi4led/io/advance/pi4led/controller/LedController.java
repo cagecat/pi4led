@@ -39,7 +39,7 @@ public class LedController {
             pinGreen = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyGreenLED", PinState.LOW);
         }
 
-        pinRed.toggle();
+        pinGreen.toggle();
 
         return "OK";
     }
@@ -51,7 +51,7 @@ public class LedController {
             pinBlue = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyBlueLED", PinState.LOW);
         }
 
-        pinRed.toggle();
+        pinBlue.toggle();
 
         return "OK";
     }
