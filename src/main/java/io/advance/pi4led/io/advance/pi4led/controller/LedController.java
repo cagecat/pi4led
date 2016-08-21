@@ -2,10 +2,13 @@ package io.advance.pi4led.io.advance.pi4led.controller;
 
 import com.pi4j.io.gpio.*;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by jgriesel on 2016/08/21.
  */
+
+@RestController
 public class LedController {
 
     private static GpioPinDigitalOutput pin;
