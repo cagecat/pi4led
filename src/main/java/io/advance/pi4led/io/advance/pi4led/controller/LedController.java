@@ -11,21 +11,47 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LedController {
 
-    private static GpioPinDigitalOutput pin;
+    private static GpioPinDigitalOutput pinRed;
+    private static GpioPinDigitalOutput pinGreen;
+    private static GpioPinDigitalOutput pinBlue;
 
     @RequestMapping("/")
     public String greeting() {
         return "Hello World!";
     }
 
-    @RequestMapping("/light")
-    public String Light() {
-        if (pin == null) {
+    @RequestMapping("/red")
+    public String Red() {
+        if (pinRed == null) {
             GpioController gpio = GpioFactory.getInstance();
-            pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
+            pinRed = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyRedLED", PinState.LOW);
         }
 
-        pin.toggle();
+        pinRed.toggle();
+
+        return "OK";
+    }
+
+    @RequestMapping("/green")
+    public String Green() {
+        if (pinGreen == null) {
+            GpioController gpio = GpioFactory.getInstance();
+            pinGreen = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_02, "MyGreenLED", PinState.LOW);
+        }
+
+        pinRed.toggle();
+
+        return "OK";
+    }
+
+    @RequestMapping("/blue")
+    public String Blue() {
+        if (pinBlue == null) {
+            GpioController gpio = GpioFactory.getInstance();
+            pinBlue = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyBlueLED", PinState.LOW);
+        }
+
+        pinRed.toggle();
 
         return "OK";
     }
